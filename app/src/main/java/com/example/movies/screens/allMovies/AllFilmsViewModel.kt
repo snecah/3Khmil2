@@ -1,27 +1,23 @@
 package com.example.movies.screens.allMovies
-
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movies.data.AllFilms
-import com.example.movies.repository.MyFilmsRepository
+import com.example.movies.MoviesApplication
+import com.example.movies.data.Film
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
-class AllFilmsViewModel:ViewModel() {
+class AllFilmsViewModel(application: MoviesApplication):AndroidViewModel(application) {
 
-    private val myFilmsRepository = MyFilmsRepository()
-    private var _myMovies: MutableLiveData<Response<AllFilms>> = MutableLiveData()
-    val myMovies: LiveData<Response<AllFilms>>
+    private val myFilmsRepository = application.repository
+    private var _myMovies: MutableLiveData<List<Film>> = MutableLiveData()
+    val myMovies: LiveData<List<Film>>
         get() = _myMovies
 
     fun getMovies() {
-        viewModelScope.launch {
-            _myMovies.value = myFilmsRepository.getMovies()
+        viewModelScope.launch(Dispatchers.IO) {
+            _myMovies.postValue(myFilmsRepository.getMovies())
         }
     }
-
-
-
 }

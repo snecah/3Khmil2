@@ -1,7 +1,11 @@
 package com.example.movies
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
+import androidx.appcompat.app.ActionBar
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.movies.databinding.ActivityMainBinding
@@ -24,5 +28,6 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         _binding = null
     }
+
 
 }

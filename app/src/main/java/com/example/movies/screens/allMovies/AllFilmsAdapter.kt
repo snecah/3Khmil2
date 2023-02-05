@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.movies.MAIN
 import com.example.movies.R
 import com.example.movies.data.Film
-import kotlinx.android.synthetic.main.movie_item.view.*
+import kotlinx.android.synthetic.main.film_item.view.*
 
 
 class AllFilmsAdapter:RecyclerView.Adapter< AllFilmsAdapter.ViewHolder>() {
@@ -21,10 +21,11 @@ class AllFilmsAdapter:RecyclerView.Adapter< AllFilmsAdapter.ViewHolder>() {
 
     class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: Film) {
-            itemView.movie_item_title.text = item.nameRu
-            itemView.movie_item_date.text = item.year
+            itemView.film_name.text = item.nameRu
+            itemView.film_year.text = "(${item.year})"
+            itemView.film_genre.text = item.genres.joinToString { genre -> genre.genre  }
             Glide.with(itemView.context).load(item.posterUrlPreview).
-            placeholder(R.drawable.loading_animation).error(R.drawable.ic_connection_error).into(itemView.movie_item_poster)
+            placeholder(R.drawable.loading_animation).error(R.drawable.ic_connection_error).into(itemView.film_poster)
             itemView.setOnClickListener {
                 onClick(item)
             }
@@ -34,7 +35,7 @@ class AllFilmsAdapter:RecyclerView.Adapter< AllFilmsAdapter.ViewHolder>() {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val view = layoutInflater
-                    .inflate(R.layout.movie_item, parent, false)
+                    .inflate(R.layout.film_item, parent, false)
                 return ViewHolder(view)
             }
 
@@ -43,6 +44,8 @@ class AllFilmsAdapter:RecyclerView.Adapter< AllFilmsAdapter.ViewHolder>() {
                 bundle.putString("posterUrl", movie.posterUrl)
                 bundle.putString("nameRu", movie.nameRu)
                 bundle.putString("genres", movie.genres.joinToString { genre -> genre.genre })
+                bundle.putString("countries", movie.countries.joinToString { country ->  country.country})
+                bundle.putInt("id", movie.filmId)
                 MAIN.navController.navigate(R.id.action_allMoviesFragment_to_detailFragment, bundle)
             }
         }
@@ -60,9 +63,4 @@ class AllFilmsAdapter:RecyclerView.Adapter< AllFilmsAdapter.ViewHolder>() {
     override fun getItemCount(): Int {
         return data.size
     }
-
-    interface Listener{
-        fun onClick(movie: Film)
-    }
-
 }
