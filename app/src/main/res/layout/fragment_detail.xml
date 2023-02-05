@@ -8,54 +8,72 @@
 
     <ImageView
         android:id="@+id/image_detail"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="360dp"
+        android:layout_height="533dp"
         android:contentDescription="@string/poster"
-        android:text="@string/hello_blank_fragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/ic_launcher_foreground"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="-1dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-24dp" />
 
 
     <ImageView
         android:id="@+id/image_detail_favorite"
-        android:layout_width="52dp"
-        android:layout_height="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_detail"
-        app:srcCompat="@drawable/ic_baseline_favorite_24" />
+        app:srcCompat="@drawable/ic_baseline_favorite_24"
+        android:layout_width="281dp"
+        android:layout_height="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="31dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="529dp"
+        android:text="@string/title"
+        android:textAppearance="@style/title"
+        android:lineSpacingExtra="-7sp"
+        android:gravity="top"/>
 
     <TextView
         android:id="@+id/movie_title"
-        style="@style/TitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="169dp"
+        android:fontFamily="@font/roboto"
         android:text="@string/title"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_detail" />
+        app:layout_constraintTop_toBottomOf="@+id/image_detail"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/genre"
         style="@style/TitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="692dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="30dp"
         android:text="genre"
         android:textColor="@color/grey"
         android:textSize="16sp"
         android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_description" />
+        app:layout_constraintTop_toTopOf="@+id/image_detail" />
 
     <TextView
         android:id="@+id/title_description"

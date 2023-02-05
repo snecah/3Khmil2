@@ -23,7 +23,7 @@ class AllFilmsAdapter:RecyclerView.Adapter< AllFilmsAdapter.ViewHolder>() {
         fun bind(item: Film) {
             itemView.movie_item_title.text = item.nameRu
             itemView.movie_item_date.text = item.year
-            Glide.with(itemView.context).load(item.posterUrl).
+            Glide.with(itemView.context).load(item.posterUrlPreview).
             placeholder(R.drawable.loading_animation).error(R.drawable.ic_connection_error).into(itemView.movie_item_poster)
             itemView.setOnClickListener {
                 onClick(item)
